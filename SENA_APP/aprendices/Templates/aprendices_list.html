@@ -1,0 +1,83 @@
+{% extends 'master.html' %}
+
+{% block title %}Lista de Aprendices{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    .container {
+        width: 90%;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+    a {
+        color: #3498db;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container">
+    <h1>Lista de Aprendices</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Programa de Formación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aprendiz in aprendices %}
+            <tr>
+                <td>{{ aprendiz.documento_identidad }}</td>
+                <td>{{ aprendiz.nombre }}</td>
+                <td>{{ aprendiz.apellido }}</td>
+                <td>{{ aprendiz.telefono }}</td>
+                <td>{{ aprendiz.correo_electronico }}</td>
+                <td>{{ aprendiz.programa_formacion }}</td>
+                <td>
+                    <a href="{% url 'aprendices:details' aprendiz.id %}">Ver Detalles</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

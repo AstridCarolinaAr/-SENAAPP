@@ -1,0 +1,63 @@
+{% extends 'master.html' %}
+
+{% block title %}Detalles del Aprendiz{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    .container {
+        width: 80%;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    .details {
+        margin-top: 20px;
+    }
+    .details p {
+        font-size: 1.1em;
+        line-height: 1.6;
+    }
+    .details p strong {
+        display: inline-block;
+        width: 200px;
+    }
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .back-link:hover {
+        background-color: #2980b9;
+    }
+</style>
+
+<div class="container">
+    <h1>Detalles del Aprendiz</h1>
+    <div class="details">
+        <p><strong>Documento de Identidad:</strong> {{ aprendiz.documento_identidad }}</p>
+        <p><strong>Nombre:</strong> {{ aprendiz.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ aprendiz.apellido }}</p>
+        <p><strong>Teléfono:</strong> {{ aprendiz.telefono }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ aprendiz.correo_electronico }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ aprendiz.fecha_nacimiento }}</p>
+        <p><strong>Ciudad:</strong> {{ aprendiz.ciudad }}</p>
+        <p><strong>Programa de Formación:</strong> {{ aprendiz.programa_formacion }}</p>
+    </div>
+    <a href="{% url 'aprendices:aprendices' %}" class="back-link">Volver a la Lista</a>
+</div>
+{% endblock %}

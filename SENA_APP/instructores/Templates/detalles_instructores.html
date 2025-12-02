@@ -1,0 +1,70 @@
+{% extends 'master.html' %}
+
+{% block title %}Detalles del Instructor{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    .container {
+        width: 80%;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    .details {
+        margin-top: 20px;
+    }
+    .details p {
+        font-size: 1.1em;
+        line-height: 1.6;
+    }
+    .details p strong {
+        display: inline-block;
+        width: 200px;
+    }
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .back-link:hover {
+        background-color: #2980b9;
+    }
+</style>
+
+<div class="container">
+    <h1>Detalles del Instructor</h1>
+    <div class="details">
+        <p><strong>Documento de Identidad:</strong> {{ instructor.documento_identidad }}</p>
+        <p><strong>Tipo de Documento:</strong> {{ instructor.get_tipo_documento_display }}</p>
+        <p><strong>Nombre:</strong> {{ instructor.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ instructor.apellido }}</p>
+        <p><strong>Teléfono:</strong> {{ instructor.telefono }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ instructor.correo }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ instructor.fecha_nacimiento }}</p>
+        <p><strong>Ciudad:</strong> {{ instructor.ciudad }}</p>
+        <p><strong>Dirección:</strong> {{ instructor.direccion }}</p>
+        <p><strong>Nivel Educativo:</strong> {{ instructor.get_nivel_educativo_display }}</p>
+        <p><strong>Especialidad:</strong> {{ instructor.especialidad }}</p>
+        <p><strong>Años de Experiencia:</strong> {{ instructor.anos_experiencia }}</p>
+        <p><strong>Activo:</strong> {{ instructor.activo|yesno:"Sí,No" }}</p>
+        <p><strong>Fecha de Vinculación:</strong> {{ instructor.fecha_vinculacion }}</p>
+        <p><strong>Fecha de Registro:</strong> {{ instructor.fecha_registro }}</p>
+    </div>
+    <a href="{% url 'instructores:instructores' %}" class="back-link">Volver a la Lista</a>
+</div>
+{% endblock %}

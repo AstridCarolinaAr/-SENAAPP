@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SENA APP{% endblock %}</title>
+    <style>
+        /* ===== HEADER ===== */
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .custom-header {
+            background: linear-gradient(90deg, #0d7a3a, #14a04a);
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-header .logo {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .custom-header nav a {
+            color: white;
+            margin-left: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .custom-header nav a:hover {
+            border-bottom: 2px solid #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* ===== CONTENIDO PRINCIPAL ===== */
+        main {
+            padding: 40px;
+        }
+
+        /* ===== FOOTER ===== */
+        .custom-footer {
+            background: #1e1e1e;
+            color: #cfcfcf;
+            text-align: center;
+            padding: 25px;
+            margin-top: 60px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 -2px 7px rgba(0, 0, 0, 0.25);
+        }
+
+        .custom-footer span {
+            color: #22c55e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="custom-header">
+        <div class="logo">SENA APP • Gestión</div>
+
+        <nav>
+            <a href="{% url 'aprendices:main' %}">Inicio</a>
+            <a href="{% url 'aprendices:aprendices' %}">Aprendices</a>
+            <a href="{% url 'instructores:instructores' %}">Instructores</a>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="custom-footer">
+        © 2025 <span>SENA APP</span> – Plataforma de Gestión Académica
+    </footer>
+</body>
+</html>
