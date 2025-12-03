@@ -1,0 +1,113 @@
+{% extends "master.html" %}
+
+{% block title %}
+Detalles del Programa
+{% endblock %}
+
+{% block content %}
+<style>
+    .programa-detalle-container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .programa-detalle-container h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    .detalle-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .detalle-item {
+        background: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .detalle-item h3 {
+        color: #2ecc71;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 5px;
+    }
+    .detalle-item p {
+        color: #555;
+    }
+    .back-link {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    .back-link:hover {
+        background-color: #2980b9;
+    }
+</style>
+
+<div class="programa-detalle-container">
+    <h1>{{ programa_detalle.nombre }}</h1>
+
+    <div class="detalle-grid">
+        <div class="detalle-item">
+            <h3>Código</h3>
+            <p>{{ programa_detalle.codigo }}</p>
+        </div>
+        <div class="detalle-item">
+            <h3>Nivel de Formación</h3>
+            <p>{{ programa_detalle.get_nivel_formacion_display }}</p>
+        </div>
+        <div class="detalle-item">
+            <h3>Modalidad</h3>
+            <p>{{ programa_detalle.get_modalidad_display }}</p>
+        </div>
+        <div class="detalle-item">
+            <h3>Duración</h3>
+            <p>{{ programa_detalle.duracion_meses }} meses / {{ programa_detalle.duracion_horas }} horas</p>
+        </div>
+        <div class="detalle-item" style="grid-column: 1 / -1;">
+            <h3>Descripción</h3>
+            <p>{{ programa_detalle.descripcion }}</p>
+        </div>
+        <div class="detalle-item" style="grid-column: 1 / -1;">
+            <h3>Competencias a Desarrollar</h3>
+            <p>{{ programa_detalle.competencias }}</p>
+        </div>
+        <div class="detalle-item">
+            <h3>Perfil de Egreso</h3>
+            <p>{{ programa_detalle.perfil_egreso }}</p>
+        </div>
+        <div class="detalle-item">
+            <h3>Requisitos de Ingreso</h3>
+            <p>{{ programa_detalle.requisitos_ingreso }}</p>
+        </div>
+        <div class="detalle-item">
+            <h3>Centro de Formación</h3>
+            <p>{{ programa_detalle.centro_formacion }}</p>
+        </div>
+        <div class="detalle-item">
+            <h3>Regional</h3>
+            <p>{{ programa_detalle.regional }}</p>
+        </div>
+        <div class="detalle-item">
+            <h3>Estado</h3>
+            <p>{{ programa_detalle.get_estado_display }}</p>
+        </div>
+        <div class="detalle-item">
+            <h3>Fecha de Creación</h3>
+            <p>{{ programa_detalle.fecha_creacion }}</p>
+        </div>
+    </div>
+
+    <a href="{% url 'programas:programas' %}" class="back-link">Volver a la lista de programas</a>
+</div>
+{% endblock %}

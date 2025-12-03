@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="db.sqlite3" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="4130"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="programas_programa" custom_title="0" dock_id="1" table="4,18:mainprogramas_programa"/><dock_state state="000000ff00000000fd00000001000000020000039100000258fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000000003910000011e00ffffff000002850000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="aprendices_aprendiz" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="35"/><column index="2" value="132"/><column index="3" value="79"/><column index="4" value="79"/><column index="5" value="95"/><column index="6" value="239"/><column index="7" value="109"/><column index="8" value="103"/><column index="9" value="271"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="programas_programa" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="35"/><column index="2" value="45"/><column index="3" value="52"/><column index="4" value="99"/><column index="5" value="67"/><column index="6" value="101"/><column index="7" value="96"/><column index="8" value="72"/><column index="9" value="87"/><column index="10" value="83"/><column index="11" value="113"/><column index="12" value="109"/><column index="13" value="54"/><column index="14" value="47"/><column index="15" value="94"/><column index="16" value="91"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1*">
+INSERT INTO programas_programa 
+(codigo, nombre, nivel_formacion, modalidad, duracion_meses, duracion_horas, descripcion, competencias, perfil_egreso, requisitos_ingreso, centro_formacion, regional, estado, fecha_creacion, fecha_registro)
+VALUES
+('ADSO-001', 'Análisis y Desarrollo de Software', 'Tecnólogo', 'Presencial', 24, 3600,
+ 'Programa orientado al desarrollo de software con metodologías ágiles.',
+ 'Programar, diseñar software, documentar, aplicar metodologías ágiles.',
+ 'Desarrollador junior, analista de software, tester.',
+ 'Saber manejar computador, lógica básica y trabajo en equipo.',
+ 'Centro de Comercio y Servicios', 'Antioquia', 'Activo', '2024-01-15', '2024-01-16'),
+
+('GA-002', 'Gestión Administrativa', 'Técnico', 'Presencial', 12, 2200,
+ 'Formación enfocada en procesos administrativos y contables.',
+ 'Manejo documental, atención al cliente, procesos administrativos.',
+ 'Auxiliar administrativo, auxiliar contable.',
+ 'Bachiller culminado.', 
+ 'Centro Industrial', 'Cundinamarca', 'Activo', '2024-02-10', '2024-02-12'),
+
+('SIS-003', 'Sistemas', 'Tecnólogo', 'Virtual', 24, 3200,
+ 'Enfoque en infraestructura, redes y soporte de TI.',
+ 'Diagnóstico de fallas, soporte técnico, instalación de redes.',
+ 'Técnico en soporte TI, auxiliar de redes.',
+ 'Conocimientos básicos en informática.',
+ 'Centro de Tecnologías', 'Valle del Cauca', 'Activo', '2024-03-05', '2024-03-06'),
+
+('CONT-004', 'Contabilidad', 'Técnico', 'Presencial', 18, 2400,
+ 'Formación en registro contable, costos y normatividad tributaria.',
+ 'Registro contable, manejo de software contable.',
+ 'Auxiliar contable, asistente financiero.',
+ 'Bachiller académico.', 
+ 'Centro de Servicios Financieros', 'Bogotá', 'Inactivo', '2024-04-01', '2024-04-03'),
+
+('MTTO-005', 'Mantenimiento Mecatrónico', 'Tecnólogo', 'Presencial', 24, 3800,
+ 'Enfoque en mantenimiento industrial, electrónica y automatización.',
+ 'Diagnóstico mecánico, programación básica, mantenimiento preventivo.',
+ 'Técnico mecatrónico, auxiliar de mantenimiento industrial.',
+ 'Conocimientos básicos en matemáticas.',
+ 'Centro de Automatización', 'Santander', 'Activo', '2024-05-20', '2024-05-21');
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
