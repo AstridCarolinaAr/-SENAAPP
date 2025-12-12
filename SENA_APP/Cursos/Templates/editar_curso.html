@@ -1,7 +1,7 @@
 {% extends 'master.html' %}
 {% load static %}
 
-{% block title %}Editar Instructor - SENA APP{% endblock %}
+{% block title %}Editar Curso - SENA APP{% endblock %}
 
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/crud_forms.css' %}">
@@ -15,7 +15,7 @@
                 <div class="crud-card-header warning">
                     <h3>
                         <i class="bi bi-pencil-square"></i>
-                        Editar Instructor
+                        Editar Curso
                     </h3>
                 </div>
                 <div class="crud-card-body">
@@ -37,41 +37,26 @@
                         </div>
                         {% endif %}
 
-                        <!-- Sección: Información Personal -->
+                        <!-- Sección: Información Básica del Curso -->
                         <div class="form-section">
                             <h5>
-                                <i class="bi bi-person-badge"></i>
-                                Información Personal
+                                <i class="bi bi-info-circle"></i>
+                                Información Básica
                             </h5>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="{{ form.tipo_documento.id_for_label }}" class="form-label fw-semibold">
-                                        <i class="bi bi-card-text me-1"></i>
-                                        {{ form.tipo_documento.label }}
+                                    <label for="{{ form.codigo.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-hash me-1"></i>
+                                        {{ form.codigo.label }}
                                     </label>
-                                    {{ form.tipo_documento }}
-                                    {% if form.tipo_documento.errors %}
+                                    {{ form.codigo }}
+                                    {% if form.codigo.errors %}
                                         <div class="field-errors">
                                             <i class="bi bi-exclamation-circle"></i>
-                                            {{ form.tipo_documento.errors.0 }}
+                                            {{ form.codigo.errors.0 }}
                                         </div>
                                     {% endif %}
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="{{ form.documento_identidad.id_for_label }}" class="form-label fw-semibold">
-                                        {{ form.documento_identidad.label }} 
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    {{ form.documento_identidad }}
-                                    {% if form.documento_identidad.errors %}
-                                        <div class="text-danger small mt-1">
-                                            <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.documento_identidad.errors.0 }}
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.nombre.id_for_label }}" class="form-label fw-semibold">
                                         {{ form.nombre.label }} 
@@ -85,167 +70,162 @@
                                         </div>
                                     {% endif %}
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="{{ form.apellido.id_for_label }}" class="form-label fw-semibold">
-                                        {{ form.apellido.label }} 
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    {{ form.apellido }}
-                                    {% if form.apellido.errors %}
-                                        <div class="text-danger small mt-1">
-                                            <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.apellido.errors.0 }}
-                                        </div>
-                                    {% endif %}
-                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="{{ form.fecha_nacimiento.id_for_label }}" class="form-label fw-semibold">
-                                        <i class="bi bi-calendar-event me-1"></i>
-                                        {{ form.fecha_nacimiento.label }} 
+                                <div class="col-md-12 mb-3">
+                                    <label for="{{ form.programa.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-diagram-3 me-1"></i>
+                                        {{ form.programa.label }} 
                                         <span class="text-danger">*</span>
                                     </label>
-                                    {{ form.fecha_nacimiento }}
-                                    {% if form.fecha_nacimiento.errors %}
+                                    {{ form.programa }}
+                                    {% if form.programa.errors %}
                                         <div class="text-danger small mt-1">
                                             <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.fecha_nacimiento.errors.0 }}
+                                            {{ form.programa.errors.0 }}
                                         </div>
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Sección: Información de Contacto -->
+                        <!-- Sección: Personal y Participantes -->
                         <div class="form-section">
                             <h5>
-                                <i class="bi bi-telephone-fill"></i>
-                                Información de Contacto
+                                <i class="bi bi-people-fill"></i>
+                                Personal y Participantes
                             </h5>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="{{ form.telefono.id_for_label }}" class="form-label fw-semibold">
-                                        <i class="bi bi-phone me-1"></i>
-                                        {{ form.telefono.label }}
+                                    <label for="{{ form.instructor_coordinador.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-person-badge me-1"></i>
+                                        {{ form.instructor_coordinador.label }} 
+                                        <span class="text-danger">*</span>
                                     </label>
-                                    {{ form.telefono }}
-                                    {% if form.telefono.errors %}
+                                    {{ form.instructor_coordinador }}
+                                    {% if form.instructor_coordinador.errors %}
                                         <div class="text-danger small mt-1">
                                             <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.telefono.errors.0 }}
+                                            {{ form.instructor_coordinador.errors.0 }}
                                         </div>
                                     {% endif %}
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="{{ form.correo.id_for_label }}" class="form-label fw-semibold">
-                                        <i class="bi bi-envelope me-1"></i>
-                                        {{ form.correo.label }}
+                                    <label for="{{ form.instructores.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-people me-1"></i>
+                                        {{ form.instructores.label }}
                                     </label>
-                                    {{ form.correo }}
-                                    {% if form.correo.errors %}
+                                    {{ form.instructores }}
+                                    <small class="text-muted d-block mt-1">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        Mantén presionada la tecla Ctrl (Cmd en Mac) para seleccionar múltiples opciones
+                                    </small>
+                                    {% if form.instructores.errors %}
                                         <div class="text-danger small mt-1">
                                             <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.correo.errors.0 }}
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="{{ form.ciudad.id_for_label }}" class="form-label fw-semibold">
-                                        <i class="bi bi-geo-alt me-1"></i>
-                                        {{ form.ciudad.label }}
-                                    </label>
-                                    {{ form.ciudad }}
-                                    {% if form.ciudad.errors %}
-                                        <div class="text-danger small mt-1">
-                                            <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.ciudad.errors.0 }}
+                                            {{ form.instructores.errors.0 }}
                                         </div>
                                     {% endif %}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 mb-3">
-                                    <label for="{{ form.direccion.id_for_label }}" class="form-label fw-semibold">
-                                        <i class="bi bi-house-door me-1"></i>
-                                        {{ form.direccion.label }}
+                                    <label for="{{ form.aprendices.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-person-check me-1"></i>
+                                        {{ form.aprendices.label }}
                                     </label>
-                                    {{ form.direccion }}
-                                    {% if form.direccion.errors %}
+                                    {{ form.aprendices }}
+                                    <small class="text-muted d-block mt-1">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        Mantén presionada la tecla Ctrl (Cmd en Mac) para seleccionar múltiples opciones
+                                    </small>
+                                    {% if form.aprendices.errors %}
                                         <div class="text-danger small mt-1">
                                             <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.direccion.errors.0 }}
+                                            {{ form.aprendices.errors.0 }}
                                         </div>
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Sección: Información Profesional -->
+                        <!-- Sección: Fechas y Horarios -->
                         <div class="form-section">
                             <h5>
-                                <i class="bi bi-briefcase"></i>
-                                Información Profesional
+                                <i class="bi bi-calendar-event"></i>
+                                Fechas y Horarios
                             </h5>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="{{ form.nivel_educativo.id_for_label }}" class="form-label fw-semibold">
-                                        <i class="bi bi-mortarboard me-1"></i>
-                                        {{ form.nivel_educativo.label }}
+                                    <label for="{{ form.fecha_inicio.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-calendar-check me-1"></i>
+                                        {{ form.fecha_inicio.label }}
                                     </label>
-                                    {{ form.nivel_educativo }}
-                                    {% if form.nivel_educativo.errors %}
+                                    {{ form.fecha_inicio }}
+                                    {% if form.fecha_inicio.errors %}
                                         <div class="text-danger small mt-1">
                                             <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.nivel_educativo.errors.0 }}
+                                            {{ form.fecha_inicio.errors.0 }}
                                         </div>
                                     {% endif %}
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="{{ form.especialidad.id_for_label }}" class="form-label fw-semibold">
-                                        <i class="bi bi-star me-1"></i>
-                                        {{ form.especialidad.label }} 
+                                    <label for="{{ form.fecha_fin.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-calendar-x me-1"></i>
+                                        {{ form.fecha_fin.label }} 
                                         <span class="text-danger">*</span>
                                     </label>
-                                    {{ form.especialidad }}
-                                    {% if form.especialidad.errors %}
+                                    {{ form.fecha_fin }}
+                                    {% if form.fecha_fin.errors %}
                                         <div class="text-danger small mt-1">
                                             <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.especialidad.errors.0 }}
+                                            {{ form.fecha_fin.errors.0 }}
                                         </div>
                                     {% endif %}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="{{ form.anos_experiencia.id_for_label }}" class="form-label fw-semibold">
-                                        <i class="bi bi-calendar-check me-1"></i>
-                                        {{ form.anos_experiencia.label }}
+                                <div class="col-md-12 mb-3">
+                                    <label for="{{ form.horario.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-clock me-1"></i>
+                                        {{ form.horario.label }}
                                     </label>
-                                    {{ form.anos_experiencia }}
-                                    {% if form.anos_experiencia.errors %}
+                                    {{ form.horario }}
+                                    <small class="text-muted d-block mt-1">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        Ejemplo: Lunes a Viernes 8:00 AM - 12:00 PM
+                                    </small>
+                                    {% if form.horario.errors %}
                                         <div class="text-danger small mt-1">
                                             <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.anos_experiencia.errors.0 }}
+                                            {{ form.horario.errors.0 }}
                                         </div>
                                     {% endif %}
                                 </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="{{ form.fecha_vinculacion.id_for_label }}" class="form-label fw-semibold">
-                                        <i class="bi bi-calendar-plus me-1"></i>
-                                        {{ form.fecha_vinculacion.label }}
+                            </div>
+                        </div>
+
+                        <!-- Sección: Logística -->
+                        <div class="form-section">
+                            <h5>
+                                <i class="bi bi-building"></i>
+                                Logística
+                            </h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.aula.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-door-open me-1"></i>
+                                        {{ form.aula.label }}
                                     </label>
-                                    {{ form.fecha_vinculacion }}
-                                    {% if form.fecha_vinculacion.errors %}
+                                    {{ form.aula }}
+                                    {% if form.aula.errors %}
                                         <div class="text-danger small mt-1">
                                             <i class="bi bi-exclamation-circle me-1"></i>
-                                            {{ form.fecha_vinculacion.errors.0 }}
+                                            {{ form.aula.errors.0 }}
                                         </div>
                                     {% endif %}
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-6 mb-3">
                                     <div class="form-check mt-4">
                                         {{ form.activo }}
                                         <label class="form-check-label fw-semibold" for="{{ form.activo.id_for_label }}">
@@ -265,13 +245,13 @@
 
                         <!-- Botones de Acción -->
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 pt-3 border-top">
-                            <a href="{% url 'instructores:instructores' %}" class="btn btn-outline-secondary me-md-2">
+                            <a href="{% url 'cursos:cursos' %}" class="btn btn-outline-secondary me-md-2">
                                 <i class="bi bi-x-circle me-2"></i>
                                 Cancelar
                             </a>
                             <button type="submit" class="btn btn-warning text-dark">
                                 <i class="bi bi-save-fill me-2"></i>
-                                Actualizar Instructor
+                                Actualizar Curso
                             </button>
                         </div>
                     </form>

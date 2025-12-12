@@ -32,7 +32,31 @@
                 <td>{{ curso.fecha_inicio }}</td>
                 <td>{{ curso.fecha_fin }}</td>
                 <td>{{ curso.estado }}</td>
-                <td><a href="{% url 'Cursos:detalle_curso' curso.id %}">Ver Detalle</a></td>
+                <td class="text-center">
+
+
+                            <!-- Botón Ver Detalles -->
+                            <a href="{% url 'cursos:detalle_curso' curso.id %}"
+                                class="btn btn-sm btn-outline-info" 
+                                title="Ver detalles"
+                                data-bs-toggle="tooltip">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+                            <!-- Botón Editar -->
+                            <a href="{% url 'cursos:editar_curso' curso.id %}" 
+                                class="btn btn-sm btn-outline-primary" 
+                                title="Editar instructor"
+                                data-bs-toggle="tooltip">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <!-- Botón Eliminar -->
+                            <a href="{% url 'cursos:eliminar_curso' curso.id %}" 
+                                class="btn btn-sm btn-outline-danger" 
+                                title="Eliminar instructor"
+                                data-bs-toggle="tooltip">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
             </tr>
             {% endfor %}
         </tbody>

@@ -31,6 +31,7 @@ class InstructorCreateView(generic.CreateView):
         f'Instructor {form.instance.nombre_completo()} creado exitosamente.')
         return super().form_valid(form) 
     
+    
     def form_invalid(self, form):
         """Mostrar mensaje de error si el formulario es inválido"""
         messages.error(

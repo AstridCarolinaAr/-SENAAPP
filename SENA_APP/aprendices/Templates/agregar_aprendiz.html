@@ -1,18 +1,183 @@
 {% extends "master.html" %}
+{% load static %}
 
-{% block content %} 
+{% block title %}Agregar Aprendiz - SENA APP{% endblock %}
 
-    <h2>Agregar Aprendiz</h2>
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/crud_forms.css' %}">
+{% endblock %}
 
+{% block content %}
+<div class="crud-form-container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+            <div class="crud-card">
+                <div class="crud-card-header">
+                    <h3>
+                        <i class="bi bi-person-plus-fill"></i>
+                        Agregar Nuevo Aprendiz
+                    </h3>
+                </div>
+                <div class="crud-card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        
+                        {% if form.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            <strong>Por favor corrija los siguientes errores:</strong>
+                            <ul class="mb-0 mt-2">
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        <li>{{ field|title }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endif %}
 
-    <form method="post">
+                        <!-- Sección: Información Personal -->
+                        <div class="form-section">
+                            <h5>
+                                <i class="bi bi-person-badge"></i>
+                                Información Personal
+                            </h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.documento_identidad.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.documento_identidad.label }} 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.documento_identidad }}
+                                    {% if form.documento_identidad.errors %}
+                                        <div class="field-errors">
+                                            <i class="bi bi-exclamation-circle"></i>
+                                            {{ form.documento_identidad.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.fecha_nacimiento.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.fecha_nacimiento.label }} 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.fecha_nacimiento }}
+                                    {% if form.fecha_nacimiento.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.fecha_nacimiento.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
 
-        {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.nombre.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.nombre.label }} 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.nombre }}
+                                    {% if form.nombre.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.nombre.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.apellido.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.apellido.label }} 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.apellido }}
+                                    {% if form.apellido.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.apellido.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
 
-        {{ form.as_p }}
+                        <!-- Sección: Información de Contacto -->
+                        <div class="form-section">
+                            <h5>
+                                <i class="bi bi-telephone-fill"></i>
+                                Información de Contacto
+                            </h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.telefono.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-phone me-1"></i>
+                                        {{ form.telefono.label }}
+                                    </label>
+                                    {{ form.telefono }}
+                                    {% if form.telefono.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.telefono.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.correo_electronico.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-envelope me-1"></i>
+                                        {{ form.correo_electronico.label }}
+                                    </label>
+                                    {{ form.correo_electronico }}
+                                    {% if form.correo_electronico.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.correo_electronico.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
 
-        <button type="submit">Guardar</button>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="{{ form.ciudad.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-geo-alt me-1"></i>
+                                        {{ form.ciudad.label }}
+                                    </label>
+                                    {{ form.ciudad }}
+                                    {% if form.ciudad.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.ciudad.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
 
-    </form>
-
+                        <!-- Botones de Acción -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 pt-3 border-top">
+                            <a href="{% url 'aprendices:aprendices' %}" class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-x-circle me-2"></i>
+                                Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save-fill me-2"></i>
+                                Guardar Aprendiz
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="crud-card-footer">
+                    <small>
+                        <i class="bi bi-info-circle"></i>
+                        Los campos marcados con <span class="text-danger fw-bold">*</span> son obligatorios.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,117 +1,311 @@
 {% extends 'master.html' %}
+{% load static %}
 
-{% block title %}Agregar Instructor - SENA APP{% endblock %}
+{% block title %}Crear Instructor - SENA APP{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/crud_forms.css' %}">
+{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card shadow">
-            <div class="card-header bg-primary text-white">
-                <h3 class="card-title mb-0">
-                    <i class="fas fa-user-plus"></i> Agregar Instructor
-                </h3>
+<div class="crud-form-container">
+    <div class="row justify-content-center">
+        <div class="col-lg-11 col-xl-10">
+            <div class="crud-card">
+                <div class="crud-card-header">
+                    <h3>
+                        <i class="bi bi-person-plus-fill"></i>
+                        Crear Nuevo Instructor
+                    </h3>
+                </div>
+                <div class="crud-card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        
+                        {% if form.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <strong>Por favor corrija los siguientes errores:</strong>
+                            <ul class="mb-0 mt-2">
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        <li>{{ field|title }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endif %}
+
+                        <!-- Sección: Información Personal -->
+                        <div class="form-section">
+                            <h5>
+                                <i class="bi bi-person-badge"></i>
+                                Información Personal
+                            </h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.tipo_documento.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-card-text me-1"></i>
+                                        {{ form.tipo_documento.label }}
+                                    </label>
+                                    {{ form.tipo_documento }}
+                                    {% if form.tipo_documento.errors %}
+                                        <div class="field-errors">
+                                            <i class="bi bi-exclamation-circle"></i>
+                                            {{ form.tipo_documento.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.documento_identidad.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.documento_identidad.label }} 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.documento_identidad }}
+                                    {% if form.documento_identidad.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.documento_identidad.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.nombre.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.nombre.label }} 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.nombre }}
+                                    {% if form.nombre.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.nombre.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.apellido.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.apellido.label }} 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.apellido }}
+                                    {% if form.apellido.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.apellido.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.fecha_nacimiento.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-calendar-event me-1"></i>
+                                        {{ form.fecha_nacimiento.label }} 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.fecha_nacimiento }}
+                                    {% if form.fecha_nacimiento.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.fecha_nacimiento.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sección: Información de Contacto -->
+                        <div class="form-section">
+                            <h5>
+                                <i class="bi bi-telephone-fill"></i>
+                                Información de Contacto
+                            </h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.telefono.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-phone me-1"></i>
+                                        {{ form.telefono.label }}
+                                    </label>
+                                    {{ form.telefono }}
+                                    {% if form.telefono.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.telefono.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.correo.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-envelope me-1"></i>
+                                        {{ form.correo.label }}
+                                    </label>
+                                    {{ form.correo }}
+                                    {% if form.correo.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.correo.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.ciudad.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-geo-alt me-1"></i>
+                                        {{ form.ciudad.label }}
+                                    </label>
+                                    {{ form.ciudad }}
+                                    {% if form.ciudad.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.ciudad.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.direccion.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-house-door me-1"></i>
+                                        {{ form.direccion.label }} 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.direccion }}
+                                    {% if form.direccion.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.direccion.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sección: Información Profesional -->
+                        <div class="form-section">
+                            <h5>
+                                <i class="bi bi-briefcase"></i>
+                                Información Profesional
+                            </h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.nivel_educativo.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-mortarboard me-1"></i>
+                                        {{ form.nivel_educativo.label }}
+                                    </label>
+                                    {{ form.nivel_educativo }}
+                                    {% if form.nivel_educativo.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.nivel_educativo.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.especialidad.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-star me-1"></i>
+                                        {{ form.especialidad.label }} 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.especialidad }}
+                                    {% if form.especialidad.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.especialidad.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.anos_experiencia.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-calendar-check me-1"></i>
+                                        {{ form.anos_experiencia.label }}
+                                    </label>
+                                    {{ form.anos_experiencia }}
+                                    {% if form.anos_experiencia.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.anos_experiencia.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sección: Información de Vinculación -->
+                        <div class="form-section">
+                            <h5>
+                                <i class="bi bi-calendar-range"></i>
+                                Información de Vinculación
+                            </h5>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.fecha_vinculacion.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-calendar-plus me-1"></i>
+                                        {{ form.fecha_vinculacion.label }}
+                                    </label>
+                                    {{ form.fecha_vinculacion }}
+                                    {% if form.fecha_vinculacion.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.fecha_vinculacion.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.fecha_registro.id_for_label }}" class="form-label fw-semibold">
+                                        <i class="bi bi-calendar-event me-1"></i>
+                                        {{ form.fecha_registro.label }}
+                                    </label>
+                                    {{ form.fecha_registro }}
+                                    {% if form.fecha_registro.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.fecha_registro.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-check mt-4">
+                                        {{ form.activo }}
+                                        <label class="form-check-label fw-semibold" for="{{ form.activo.id_for_label }}">
+                                            <i class="bi bi-toggle-on me-1"></i>
+                                            {{ form.activo.label }} 
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                    {% if form.activo.errors %}
+                                        <div class="text-danger small mt-1">
+                                            <i class="bi bi-exclamation-circle me-1"></i>
+                                            {{ form.activo.errors.0 }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botones de Acción -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 pt-3 border-top">
+                            <a href="{% url 'instructores:instructores' %}" class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-x-circle me-2"></i>
+                                Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save-fill me-2"></i>
+                                Guardar Instructor
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="crud-card-footer">
+                    <small>
+                        <i class="bi bi-info-circle"></i>
+                        Los campos marcados con <span class="text-danger fw-bold">*</span> son obligatorios.
+                    </small>
+                </div>
             </div>
-            <div class="card-body">
-                <form method="post" novalidate>
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.tipo_documento.label }}</label>
-                            {{ form.tipo_documento }}
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.documento_identidad.label }} <span class="text-danger">*</span></label>
-                            {{ form.documento_identidad }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.nombre.label }} <span class="text-danger">*</span></label>
-                            {{ form.nombre }}
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.apellido.label }} <span class="text-danger">*</span></label>
-                            {{ form.apellido }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.telefono.label }}</label>
-                            {{ form.telefono }}
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.correo.label }}</label>
-                            {{ form.correo }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.ciudad.label }}</label>
-                            {{ form.ciudad }}
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.direccion.label }} <span class="text-danger">*</span></label>
-                            {{ form.direccion }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.nivel_educativo.label }}</label>
-                            {{ form.nivel_educativo }}
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.especialidad.label }} <span class="text-danger">*</span></label>
-                            {{ form.especialidad }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.anos_experiencia.label }}</label>
-                            {{ form.anos_experiencia }}
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label>{{ form.activo.label }} <span class="text-danger">*</span></label>
-                            {{ form.activo }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label>{{ form.fecha_vinculacion.label }}</label>
-                            {{ form.fecha_vinculacion }}
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label>{{ form.fecha_registro.label }}</label>
-                            {{ form.fecha_registro }}
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label>{{ form.fecha_nacimiento.label }} <span class="text-danger">*</span></label>
-                            {{ form.fecha_nacimiento }}
-                        </div>
-                    </div>
-
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="{% url 'instructores:lista_instructores' %}" class="btn btn-secondary me-md-2">
-                            <i class="fas fa-times"></i> Cancelar
-                        </a>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save"></i> Guardar Instructor
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        <div class="mt-3">
-            <small class="text-muted">
-                <i class="fas fa-info-circle"></i> 
-                Los campos marcados con <span class="text-danger">*</span> son obligatorios.
-            </small>
         </div>
     </div>
 </div>
