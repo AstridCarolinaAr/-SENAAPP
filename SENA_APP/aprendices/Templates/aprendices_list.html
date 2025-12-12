@@ -1,54 +1,13 @@
 {% extends 'master.html' %}
+{% load static %}
 
 {% block title %}Lista de Aprendices{% endblock %}
 
-{% block content %}
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
-    }
-    .container {
-        width: 90%;
-        margin: 20px auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-        text-align: center;
-        color: #333;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    th, td {
-        padding: 12px;
-        border: 1px solid #ddd;
-        text-align: left;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-    a {
-        color: #3498db;
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: underline;
-    }
-</style>
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/aprendices.css' %}">
+{% endblock %}
 
+{% block content %}
 <div class="container">
     <h1>Lista de Aprendices</h1>
     <table>
@@ -72,12 +31,42 @@
                 <td>{{ aprendiz.telefono }}</td>
                 <td>{{ aprendiz.correo_electronico }}</td>
                 <td>{{ aprendiz.programa_formacion }}</td>
-                <td>
-                    <a href="{% url 'aprendices:details' aprendiz.id %}">Ver Detalles</a>
-                </td>
+                <td class="text-center">
+
+                            <!-- Botón Ver Detalles -->
+
+                            <a href="{% url 'aprendices:details' aprendiz.id %}" 
+                               class="btn btn-sm btn-outline-info" 
+                               title="Ver detalles"
+                               data-bs-toggle="tooltip">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+
+                            <!-- Botón Editar -->
+
+                            <a href="{% url 'aprendices:editar_aprendiz' aprendiz.id %} 
+
+                               class="btn btn-sm btn-outline-primary" 
+                               title="Editar aprendiz"
+                               data-bs-toggle="tooltip">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+
+                            <!-- Botón Eliminar -->
+                            <a href="{% url 'aprendices:eliminar_aprendiz' aprendiz.id %}" 
+                               class="btn btn-sm btn-outli
+                               title="Eliminar aprendiz"
+                               data-bs-toggle="tooltip">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+
+                        </td>
+
+                    </tr>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <a href="{% url 'aprendices:crear_aprendiz' %}" class="add-button">Agregar Aprendiz</a>
 </div>
 {% endblock %}

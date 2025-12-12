@@ -1,4 +1,5 @@
 from django.db import models
+
 class Instructor(models.Model):
 
     TIPO_DOCUMENTO_CHOICES = [
@@ -37,5 +38,5 @@ class Instructor(models.Model):
     def __str__(self):
         return f"{self.nombre} {self.apellido} - {self.documento_identidad}"
 
-    def get_full_name(self):
+    def nombre_completo(self):
         return f"{self.nombre} {self.apellido}"

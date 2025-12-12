@@ -1,0 +1,96 @@
+/* SENA_APP/programas/static/css/programas.css */
+
+.programas-list-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.programas-list-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+.programas-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.programas-table th, .programas-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+.programas-table th {
+    background-color: #14a04a; /* SENA Green */
+    color: white;
+}
+.programas-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.programas-table tr:hover {
+    background-color: #ddd;
+}
+.programas-table a {
+    color: #0d7a3a; /* SENA Green */
+    text-decoration: none;
+    font-weight: bold;
+}
+.programas-table a:hover {
+    text-decoration: underline;
+}
+.total-programas {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+/* Styles for programa_detalle.html */
+.programa-detalle-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.programa-detalle-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+.detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.detalle-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.detalle-item h3 {
+    color: #0d7a3a; /* SENA Green */
+    margin-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+.detalle-item p {
+    color: #555;
+}
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #14a04a; /* SENA Green */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.back-link:hover {
+    background-color: #0d7a3a; /* Darker SENA Green */
+}

@@ -39,14 +39,19 @@ class Programa(models.Model):
     estado = models.CharField(max_length=3, choices=ESTADO_CHOICES, default='ACT', verbose_name="Estado")
     fecha_creacion = models.DateField(verbose_name="Fecha de Creación del Programa")
     fecha_registro = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Registro")
-
+   
+   
     class Meta:
         verbose_name = "Programa de Formación"
         verbose_name_plural = "Programas de Formacion"
         ordering = ['nombre']
 
-    def _str_(self):
-        return f"{self.nombre} ({self.codigo})"
+    def __str__(self):
+        return f"{self.nombre} {self.codigo}"
+    # Create your models here.
+    def nombre_completo(self):
+        return f"{self.nombre} {self.codigo}"
+
 
     # Aquí se corta la imagen, pero probablemente siguen los campos
     # usando las opciones de arriba.

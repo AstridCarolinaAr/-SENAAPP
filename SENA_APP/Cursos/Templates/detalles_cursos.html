@@ -1,0 +1,80 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}Detalles del Curso - SENA APP{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/cursos.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Detalles del Curso: {{ curso.nombre }}</h1>
+
+    <div class="container">
+        <div class="detail-item"><strong>Código:</strong> {{ curso.codigo }}</div>
+        <div class="detail-item"><strong>Programa:</strong> {{ curso.programa }}</div>
+        <div class="detail-item"><strong>Instructor Coordinador:</strong> {{ curso.instructor_coordinador }}</div>
+        <div class="detail-item"><strong>Fecha de Inicio:</strong> {{ curso.fecha_inicio }}</div>
+        <div class="detail-item"><strong>Fecha de Finalización:</strong> {{ curso.fecha_fin }}</div>
+        <div class="detail-item"><strong>Horario:</strong> {{ curso.horario }}</div>
+        <div class="detail-item"><strong>Aula:</strong> {{ curso.aula }}</div>
+        <div class="detail-item"><strong>Cupos Máximos:</strong> {{ curso.cupos_maximos }}</div>
+        <div class="detail-item"><strong>Estado:</strong> {{ curso.get_estado_display }}</div>
+        <div class="detail-item"><strong>Observaciones:</strong> {{ curso.observaciones|default:"N/A" }}</div>
+        <div class="detail-item"><strong>Fecha de Registro:</strong> {{ curso.fecha_registro }}</div>
+        <div class="detail-item"><strong>Cupos Disponibles:</strong> {{ curso.cupos_disponibles }}</div>
+        <div class="detail-item"><strong>Porcentaje Ocupación:</strong> {{ curso.porcentaje_ocupacion|floatformat:2 }}%</div>
+    </div>
+
+    <h2>Instructores Asignados</h2>
+    {% if instructores_curso %}
+    <table>
+        <thead>
+            <tr>
+                <th>Instructor</th>
+                <th>Rol</th>
+                <th>Fecha de Asignación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ic in instructores_curso %}
+            <tr>
+                <td>{{ ic.instructor.nombre }} {{ ic.instructor.apellido }}</td>
+                <td>{{ ic.rol }}</td>
+                <td>{{ ic.fecha_asignacion }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No hay instructores asignados a este curso.</p>
+    {% endif %}
+
+    <h2>Aprendices Inscritos</h2>
+    {% if aprendices_curso %}
+    <table>
+        <thead>
+            <tr>
+                <th>Aprendiz</th>
+                <th>Fecha de Inscripción</th>
+                <th>Estado</th>
+                <th>Nota Final</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ac in aprendices_curso %}
+            <tr>
+                <td>{{ ac.aprendiz.nombre }} {{ ac.aprendiz.apellido }}</td>
+                <td>{{ ac.fecha_inscripcion }}</td>
+                <td>{{ ac.get_estado_display }}</td>
+                <td>{{ ac.nota_final|default:"N/A" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No hay aprendices inscritos en este curso.</p>
+    {% endif %}
+
+    <a href="{% url 'Cursos:cursos' %}" class="back-link">Volver a la lista de cursos</a>
+{% endblock %}

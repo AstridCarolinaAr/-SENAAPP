@@ -1,51 +1,13 @@
 {% extends 'master.html' %}
+{% load static %}
 
 {% block title %}Detalles del Instructor{% endblock %}
 
-{% block content %}
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
-    }
-    .container {
-        width: 80%;
-        margin: 20px auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-        text-align: center;
-        color: #333;
-    }
-    .details {
-        margin-top: 20px;
-    }
-    .details p {
-        font-size: 1.1em;
-        line-height: 1.6;
-    }
-    .details p strong {
-        display: inline-block;
-        width: 200px;
-    }
-    .back-link {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 15px;
-        background-color: #3498db;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-    .back-link:hover {
-        background-color: #2980b9;
-    }
-</style>
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/instructores.css' %}">
+{% endblock %}
 
+{% block content %}
 <div class="container">
     <h1>Detalles del Instructor</h1>
     <div class="details">

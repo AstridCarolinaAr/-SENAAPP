@@ -11,9 +11,9 @@ class Aprendiz(models.Model):
     ciudad = models.CharField(max_length=100, null=True)
     programa_formacion = models.CharField(max_length=100)
 
-def __str__(self):
-    return f"{self.nombre} {self.apellido}"
-# Create your models here.
-def nombre_completo(self):
-    return f"{self.nombre} {self.apellido}"
+    def __str__(self):
+        return f"{self.nombre} {self.apellido}"
+    # Create your models here.
+    def nombre_completo(self):
+        return f"{self.nombre} {self.apellido}"
 

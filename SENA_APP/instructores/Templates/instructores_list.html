@@ -1,56 +1,25 @@
 {% extends 'master.html' %}
+{% load static %}
 
 {% block title %}Lista de Instructores{% endblock %}
 
-{% block content %}
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
-    }
-    .container {
-        width: 90%;
-        margin: 20px auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-        text-align: center;
-        color: #333;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    th, td {
-        padding: 12px;
-        border: 1px solid #ddd;
-        text-align: left;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-    a {
-        color: #3498db;
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: underline;
-    }
-</style>
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/instructores.css' %}">
+{% endblock %}
 
+{% block content %}
 <div class="container">
     <h1>Lista de Instructores</h1>
+    <div class="d-flex align-items-center mb-3">
+        <div>
+            <a href="{% url 'instructores:crear_instructor' %}" class="btn btn-success">
+                Nuevo Instructor
+            </a>
+        </div>
+        <div class="ms-auto">
+            <span class="badge bg-info fs-6">Total: {{ total_instructores }} Instructores</span>
+        </div>
+    </div>
     <table>
         <thead>
             <tr>
@@ -76,12 +45,36 @@
                 <td>{{ instructor.especialidad }}</td>
                 <td>{{ instructor.anos_experiencia }}</td>
                 <td>{{ instructor.activo|yesno:"Sí,No" }}</td>
-                <td>
-                    <a href="{% url 'instructores:details' instructor.id %}">Ver Detalles</a>
-                </td>
+                 <td class="text-center">
+
+
+                            <!-- Botón Ver Detalles -->
+                            <a href="{% url 'instructores:detalle_instructor' instructor.id %}"
+                               class="btn btn-sm btn-outline-info" 
+                               title="Ver detalles"
+                               data-bs-toggle="tooltip">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+                            <!-- Botón Editar -->
+                            <a href="{% url 'instructores:editar_instructor' instructor.id %}" 
+                               class="btn btn-sm btn-outline-primary" 
+                               title="Editar instructor"
+                               data-bs-toggle="tooltip">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <!-- Botón Eliminar -->
+                            <a href="{% url 'instructores:eliminar_instructor' instructor.id %}" 
+                               class="btn btn-sm btn-outline-danger" 
+                               title="Eliminar instructor"
+                               data-bs-toggle="tooltip">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
-{% endblock %}
+    {% endblock %}
